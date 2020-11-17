@@ -1,6 +1,8 @@
 package ru.geekbrains.githubclient.mvp.presenter
 
-
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import moxy.MvpPresenter
 import ru.geekbrains.githubclient.GithubApplication
 import ru.geekbrains.githubclient.mvp.model.entity.GithubUser
@@ -13,6 +15,7 @@ import ru.terrakok.cicerone.Router
 import java.util.*
 
 class UsersPresenter : MvpPresenter<IUsersView?>() {
+    private val compositeDisposable = CompositeDisposable()
     private val usersRepo: GithubUserRepo = GithubUserRepo()
     private val router: Router? = GithubApplication.application?.router
 
@@ -41,11 +44,23 @@ class UsersPresenter : MvpPresenter<IUsersView?>() {
     }
 
     private fun loadData() {
-        val users: List<GithubUser> = usersRepo.users
-        usersListPresenter.users.addAll(users)
-        viewState?.updateList()
+        val usersDisposable = usersRepo.users
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        { users ->
+                            usersListPresenter.users.addAll(users)
+                            viewState?.updateList()
+                        },
+                        { error -> error.printStackTrace() }
+                )
+        compositeDisposable.add(usersDisposable)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
+    }
     fun backPressed(): Boolean {
         router?.exit()
         return true
