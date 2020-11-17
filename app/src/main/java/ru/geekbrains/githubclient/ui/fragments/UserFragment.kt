@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_user.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
-import ru.shumilova.githubclient.R
+import ru.geekbrains.githubclient.R
 import ru.geekbrains.githubclient.mvp.model.entity.GithubUser
 import ru.geekbrains.githubclient.mvp.presenter.UserPresenter
 import ru.geekbrains.githubclient.mvp.view.IUserView

@@ -3,7 +3,7 @@ package ru.geekbrains.githubclient
 import android.os.Bundle
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
-import ru.shumilova.githubclient.R
+import ru.geekbrains.githubclient.R
 import ru.geekbrains.githubclient.mvp.presenter.MainPresenter
 import ru.geekbrains.githubclient.mvp.view.IMainView
 import ru.terrakok.cicerone.Navigator

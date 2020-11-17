@@ -1,4 +1,4 @@
-package ru.shumilova.githubclient
+package ru.geekbrains.githubclient
 
 import org.junit.Test
 

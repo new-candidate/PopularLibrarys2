@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import ru.shumilova.githubclient.R
+import ru.geekbrains.githubclient.R
 import ru.geekbrains.githubclient.mvp.presenter.list.IUserListPresenter
 import ru.geekbrains.githubclient.mvp.view.IUserItemView
 

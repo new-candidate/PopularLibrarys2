@@ -1,6 +1,6 @@
 package ru.geekbrains.githubclient.mvp.presenter
 
-import android.util.Log
+
 import moxy.MvpPresenter
 import ru.geekbrains.githubclient.GithubApplication
 import ru.geekbrains.githubclient.mvp.model.entity.GithubUser
@@ -20,7 +20,6 @@ class UsersPresenter : MvpPresenter<IUsersView?>() {
         val users: MutableList<GithubUser> = ArrayList()
 
         override fun onItemClick(view: IUserItemView) {
-            Log.v(TAG, " onItemClick " + view.pos)
             router?.navigateTo(Screens.UserScreen(users[view.pos]))
         }
 
@@ -51,9 +50,5 @@ class UsersPresenter : MvpPresenter<IUsersView?>() {
         router?.exit()
         return true
     }
-
-    companion object {
-        private val TAG = UsersPresenter::class.java.simpleName
-        private const val VERBOSE = true
-    }
 }
+

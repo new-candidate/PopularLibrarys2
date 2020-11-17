@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_users.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
-import ru.shumilova.githubclient.R
+import ru.geekbrains.githubclient.R
 import ru.geekbrains.githubclient.mvp.presenter.UsersPresenter
 import ru.geekbrains.githubclient.mvp.view.IUsersView
 import ru.geekbrains.githubclient.ui.BackButtonListener
